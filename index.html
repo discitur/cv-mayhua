@@ -6,6 +6,7 @@
     <title>Clipton Mayhua Coaquira - Licenciado en Marketing</title>
     <!-- Fuente de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         /* =========================================
            VARIABLES DE COLOR (FLAT DESIGN)
@@ -18,6 +19,8 @@
             --color-texto-oscuro: #333333;
             --color-texto-claro: #ffffff;
             --color-texto-mutado: #666666;
+            --color-exito: #10b981;
+            --color-error: #ef4444;
         }
 
         /* =========================================
@@ -73,6 +76,7 @@
             height: 70px;
             display: flex;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .navbar {
@@ -121,7 +125,7 @@
             cursor: pointer;
             flex-direction: column;
             gap: 5px;
-            z-index: 1001; /* Asegura que esté por encima del menú móvil */
+            z-index: 1001;
         }
 
         .hamburger span {
@@ -142,6 +146,23 @@
             background-color: var(--color-fondo-blanco);
             text-align: center;
             border-bottom: 5px solid var(--color-secundario);
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            margin: 0 auto 25px auto;
+            border: 4px solid var(--color-secundario);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
         }
 
         .hero-content h1 {
@@ -167,7 +188,7 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 30px;
         }
 
@@ -181,6 +202,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: background-color 0.3s ease;
         }
 
         .contact-item a {
@@ -261,6 +283,7 @@
             padding: 20px;
             border-left: 5px solid var(--color-secundario);
             border-radius: 0 4px 4px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .timeline-content h3 {
@@ -301,8 +324,9 @@
         .card {
             background-color: var(--color-fondo);
             padding: 30px;
-            border-radius: 4px;
+            border-radius: 8px;
             border-top: 5px solid var(--color-principal);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
         .card h3 {
@@ -353,7 +377,7 @@
         .skill-category {
             background-color: rgba(255,255,255,0.1);
             padding: 25px;
-            border-radius: 4px;
+            border-radius: 8px;
         }
 
         .skill-category h3 {
@@ -375,6 +399,203 @@
             font-size: 0.85rem;
             border-radius: 20px;
             font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* =========================================
+           SECCIÓN DE CONTACTO
+           ========================================= */
+        #contacto {
+            background-color: var(--color-fondo);
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 992px) {
+            .contacto-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+            }
+        }
+
+        .contacto-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contacto-info h2 {
+            font-size: 2.5rem;
+            color: var(--color-texto-oscuro);
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .contacto-info p.subtitle {
+            font-size: 1.25rem;
+            color: var(--color-texto-mutado);
+            font-weight: 600;
+        }
+
+        .contacto-info p.desc {
+            font-size: 1rem;
+            color: var(--color-texto-mutado);
+            line-height: 1.8;
+            max-width: 450px;
+            margin-bottom: 10px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-texto-oscuro);
+            transition: color 0.3s ease;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        
+        .btn-whatsapp:hover {
+            color: #16a34a; /* Verde oscuro */
+        }
+
+        .btn-whatsapp .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #dcfce7; /* Verde claro */
+            color: #16a34a;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .btn-whatsapp:hover .icon-wrapper {
+            background-color: #16a34a;
+            color: white;
+            box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
+        }
+
+        .contacto-form-card {
+            background-color: var(--color-fondo-blanco);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 40px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-texto-oscuro);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background-color: #f9fafb;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
+            box-sizing: border-box;
+            color: #374151;
+        }
+
+        .form-control::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-control:focus {
+            border-color: var(--color-secundario);
+            background-color: var(--color-fondo-blanco);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--color-principal);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 75, 147, 0.2);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #003870;
+            box-shadow: 0 6px 12px rgba(0, 75, 147, 0.3);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .alert-success {
+            margin-top: 24px;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .alert-success svg {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+        }
+
+        .alert-error {
+            margin-top: 24px;
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         /* =========================================
@@ -407,8 +628,8 @@
             /* Estilos del menú móvil */
             .nav-links {
                 position: fixed;
-                top: 70px; /* Debajo del header */
-                right: -100%; /* Oculto a la derecha */
+                top: 70px;
+                right: -100%;
                 width: 100%;
                 height: calc(100vh - 70px);
                 background-color: var(--color-principal);
@@ -416,12 +637,11 @@
                 align-items: center;
                 justify-content: center;
                 gap: 40px;
-                /* Transición fluida y suave */
                 transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
             }
 
             .nav-links.active {
-                right: 0; /* Desliza hacia la vista */
+                right: 0;
             }
 
             .nav-links a {
@@ -432,7 +652,6 @@
                 padding: 15px;
             }
 
-            /* Animación de la hamburguesa (se convierte en X de forma suave) */
             .hamburger.active span:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
                 background-color: var(--color-secundario);
@@ -451,6 +670,11 @@
             .hero-content h1 {
                 font-size: 2.2rem;
             }
+
+            .profile-pic {
+                width: 140px;
+                height: 140px;
+            }
             
             .timeline::before {
                 left: 15px;
@@ -462,6 +686,10 @@
             
             .timeline-item::before {
                 left: 9px;
+            }
+            
+            .contacto-form-card {
+                padding: 25px;
             }
         }
     </style>
@@ -484,6 +712,7 @@
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#educacion">Educación</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -491,6 +720,9 @@
     <!-- SECCIÓN INICIO -->
     <section id="inicio">
         <div class="container hero-content">
+            <!-- Foto de perfil agregada -->
+            <img src="https://raw.githubusercontent.com/discitur/cv-mayhua/main/foto%20clipton.png" alt="Foto de Clipton Mayhua" class="profile-pic">
+            
             <h1>Clipton Mayhua Coaquira</h1>
             <h2>Licenciado en Marketing</h2>
             <p>Profesional con más de cinco años de experiencia. Especialista en marketing y proyectos. Apasionado por la enseñanza, con habilidades para el trabajo en equipo.</p>
@@ -714,6 +946,88 @@
         </div>
     </section>
 
+    <!-- SECCIÓN DE CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            
+            <div class="contacto-grid">
+                
+                <!-- ÁREA 1: Información de Contacto -->
+                <div class="contacto-info">
+                    <h2>Contáctanos</h2>
+                    <p class="subtitle">Trabajemos juntos</p>
+                    <p class="desc">Estamos listos para ayudarte a llevar tu proyecto al siguiente nivel. Escríbenos y te responderemos lo más pronto posible.</p>
+                    
+                    <a href="https://wa.me/51974372574" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                            </svg>
+                        </div>
+                        <span>Escríbenos por WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- ÁREA 2: Formulario de Contacto -->
+                <div class="contacto-form-card">
+                    <form id="contactForm">
+                        
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required class="form-control" placeholder="Tu nombre completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required class="form-control" placeholder="+51 987 654 321">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="correoelectronico">Correo Electrónico</label>
+                            <input type="email" id="correoelectronico" name="correoelectronico" required class="form-control" placeholder="tucorreo@ejemplo.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" required class="form-control" placeholder="¿En qué podemos ayudarte?"></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="btn-submit">
+                            <span id="btnText">Enviar Mensaje</span>
+                            <svg id="btnIcon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </button>
+                    </form>
+
+                    <!-- Alerta de Éxito (Oculta por defecto) -->
+                    <div id="successAlert" class="alert-success hidden">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 2px;">¡Mensaje enviado con éxito!</p>
+                            <p style="font-size: 0.85rem; opacity: 0.9;">Nos pondremos en contacto contigo pronto.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Alerta de Error (Oculta por defecto) -->
+                    <div id="errorAlert" class="alert-error hidden">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 2px;">Ocurrió un error</p>
+                            <p style="font-size: 0.85rem; opacity: 0.9;">Hubo un inconveniente al enviar el mensaje. Intenta más tarde.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -724,6 +1038,7 @@
     <!-- LÓGICA JAVASCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            /* === LÓGICA DEL MENÚ MÓVIL === */
             const hamburger = document.getElementById('hamburger');
             const navLinks = document.getElementById('nav-links');
             const links = navLinks.querySelectorAll('a');
@@ -752,6 +1067,65 @@
                     }
                 });
             });
+
+            /* === LÓGICA DEL FORMULARIO DE CONTACTO === */
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const successAlert = document.getElementById('successAlert');
+            const errorAlert = document.getElementById('errorAlert');
+
+            // URL del Google Apps Script
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx5Art7xHIMn7EbJyK74cyNwRRPQ26NYwMgPlzzNqojYHhajiC8-rEzx-GDSc65b-2X/exec';
+
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    // Estado de carga del botón
+                    btnText.textContent = 'Enviando...';
+                    submitBtn.disabled = true;
+                    btnIcon.classList.add('hidden');
+                    successAlert.classList.add('hidden');
+                    errorAlert.classList.add('hidden');
+
+                    const formData = new FormData(form);
+
+                    try {
+                        const response = await fetch(scriptURL, {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            // Éxito
+                            form.reset();
+                            successAlert.classList.remove('hidden');
+                            
+                            // Ocultar mensaje de éxito después de 6 segundos
+                            setTimeout(() => {
+                                successAlert.classList.add('hidden');
+                            }, 6000);
+                        } else {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+                    } catch (error) {
+                        console.error('Error al enviar el formulario:', error);
+                        // Mostrar alerta de error visualmente
+                        errorAlert.classList.remove('hidden');
+                        
+                        setTimeout(() => {
+                            errorAlert.classList.add('hidden');
+                        }, 6000);
+                    } finally {
+                        // Restaurar estado del botón
+                        btnText.textContent = 'Enviar Mensaje';
+                        submitBtn.disabled = false;
+                        btnIcon.classList.remove('hidden');
+                    }
+                });
+            }
         });
     </script>
 </body>
